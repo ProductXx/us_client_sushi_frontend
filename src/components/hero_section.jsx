@@ -1,3 +1,4 @@
+"use client";
 import {
   IconArrowRight,
   IconArrowUpRight,
@@ -5,8 +6,27 @@ import {
   IconPlayerPlay,
 } from "@tabler/icons-react";
 import React from "react";
+import { motion } from "framer-motion";
+import AnimatedDiv from "@/utils/animation";
 
+export const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+};
 const HeroSection = () => {
+  const spanVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
   return (
     <div className="flex flex-col w-full md:p-10 p-5 gap-10">
       <div className="md:h-[60vh] gap-5 md:w-full flex md:flex-row flex-col">
@@ -16,9 +36,16 @@ const HeroSection = () => {
             <IconMenu />
             <button className="primary-btn">Contect</button>
           </div>
-          <div className="hero-font text-secondary text-[50px] md:text-[100px]">
-            Discover the Ultimate Sushi Experience!
-          </div>
+          <motion.div
+            className="hero-font text-secondary text-[50px] md:text-[100px] w-full flex flex-wrap"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.span variants={spanVariants}>Discover the </motion.span>
+            <motion.span variants={spanVariants}>Ultimate Sushi </motion.span>
+            <motion.span variants={spanVariants}>Experience!</motion.span>
+          </motion.div>
           <div className="flex md:justify-end md:gap-10 gap-5">
             <button className="primary-btn flex gap-2 md:gap-5">
               <IconArrowRight />
@@ -41,7 +68,18 @@ const HeroSection = () => {
             <span className=" text-sm md:text-lg">
               Fresh ingredients sauced locally <br /> and prepard mindfully
             </span>
-            <div className="p-3 transition duration-150 rounded-full bg-white text-black">
+            <div className="p-3 relative transition duration-150 flex items-center justify-center rounded-full bg-white text-black">
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 8,
+                  ease: "linear",
+                }}
+                className=" absolute rounded-full w-8 h-8 border-dashed border-2 border-black"
+              ></motion.div>
               <IconArrowUpRight />
             </div>
           </div>
@@ -72,16 +110,7 @@ const HeroSection = () => {
             alt="heroimg"
           />
         </div>
-        <div className=" overflow-hidden relative shadow-lg rounded-lg col-span-2 w-full">
-          <div className=" absolute left-5 top-5 md:top-20 text-white">
-            Feel the taste of Japanese foods
-          </div>
-          <img
-            className=" object-cover w-full h-full"
-            src="/assets/semi_hero2.jpg"
-            alt="heroimg"
-          />
-        </div>
+        <AnimatedDiv />
       </div>
     </div>
   );

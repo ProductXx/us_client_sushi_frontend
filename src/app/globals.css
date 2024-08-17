@@ -14,8 +14,8 @@
   font-style: normal;
 }
 .primary-btn {
-  @apply bg-secondary md:py-2 md:px-8 px-5 py-2 items-center flex text-sm md:text-base rounded-full text-white hover:bg-primary transition duration-150;
+  @apply bg-secondary md:py-2 md:px-8 px-4 py-2 items-center flex text-sm md:text-base rounded-full text-white hover:bg-primary transition duration-150;
 }
 .secondary-btn {
-  @apply bg-black/10 backdrop-blur-md md:py-2 md:px-8 px-5 py-2 items-center flex text-sm md:text-base rounded-full text-secondary hover:bg-primary hover:text-white transition duration-150;
+  @apply bg-black/10 backdrop-blur-md md:py-2 md:px-8 px-4 py-2 items-center flex text-sm md:text-base rounded-full text-secondary hover:bg-primary hover:text-white transition duration-150;
 }
