@@ -26,7 +26,7 @@ const MenuSection = () => {
       <div className="flex justify-center ">
         <SliderToggle selected={selected} setSelected={setSelected} />
       </div>
-      <div className="relative grid h-[300px] place-content-center px-4 transition-colors bg-gray-100 rounded-lg shadow-lg">
+      <div className="relative w-full transition-colors bg-gray-100 rounded-lg shadow-lg">
         <AnimatePresence mode="wait">
           {selected === "single" ? (
             <motion.div

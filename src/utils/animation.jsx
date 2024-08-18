@@ -13,7 +13,8 @@ function AnimatedDiv() {
   useEffect(() => {
     if (inView) {
       controls.start({
-        x: 0,
+        y: 20,
+        x: 20,
         opacity: 1,
         transition: { duration: 1, ease: "easeOut" },
       });
@@ -24,8 +25,8 @@ function AnimatedDiv() {
     <div className="overflow-hidden relative shadow-lg rounded-lg col-span-2 w-full">
       <motion.div
         ref={ref}
-        className="absolute left-5 top-5 md:top-20 text-white border-b-2"
-        initial={{ x: 50, opacity: 0 }}
+        className="absolute md:top-20 text-white border-b-2"
+        initial={{ x: 100, y: 20, opacity: 0 }}
         animate={controls}
       >
         Feel the taste of Japanese foods

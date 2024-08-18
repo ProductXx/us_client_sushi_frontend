@@ -1,13 +1,15 @@
 "use client";
+
 import {
   IconArrowRight,
   IconArrowUpRight,
   IconMenu,
   IconPlayerPlay,
 } from "@tabler/icons-react";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedDiv from "@/utils/animation";
+import Sidebar from "@/utils/side_bar";
 
 export const containerVariants = {
   hidden: { opacity: 1 },
@@ -18,7 +20,18 @@ export const containerVariants = {
     },
   },
 };
+
 const HeroSection = () => {
+  const [isSidebarVisible, setSidebarVisible] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarVisible((prev) => !prev);
+  };
+
+  const closeSidebar = () => {
+    setSidebarVisible(false);
+  };
+
   const spanVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: {
@@ -27,14 +40,21 @@ const HeroSection = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
+
   return (
     <div className="flex flex-col w-full md:p-10 p-5 gap-10">
+      {/* Sidebar */}
+      <Sidebar isVisible={isSidebarVisible} onClose={closeSidebar} />
+
       <div className="md:h-[60vh] gap-5 md:w-full flex md:flex-row flex-col">
         {/* left section top  */}
         <div className="md:w-3/5 flex flex-col gap-5 justify-around md:px-5">
           <div className="w-full flex justify-between">
-            <IconMenu />
-            <button className="primary-btn">Contect</button>
+            {/* Toggle button for Sidebar */}
+            <button onClick={toggleSidebar}>
+              <IconMenu />
+            </button>
+            <button className="primary-btn">Contact</button>
           </div>
           <motion.div
             className="hero-font text-secondary text-[50px] md:text-[100px] w-full flex flex-wrap"
@@ -66,7 +86,7 @@ const HeroSection = () => {
           />
           <div className=" w-full bg-third py-3 md:py-5 text-secondary px-5 md:px-10 flex justify-between items-center absolute bottom-2 md:bottom-5">
             <span className=" text-sm md:text-lg">
-              Fresh ingredients sauced locally <br /> and prepard mindfully
+              Fresh ingredients sourced locally <br /> and prepared mindfully
             </span>
             <div className="p-3 relative transition duration-150 flex items-center justify-center rounded-full bg-white text-black">
               <motion.div
@@ -90,7 +110,7 @@ const HeroSection = () => {
           <span className="text-2xl">
             Purest Sushi Experience <br />
             Focusing on Premium Quality <br />
-            Ingraedients
+            Ingredients
           </span>
           <div className="flex justify-start gap-10">
             <button className="secondary-btn">Menu</button>
