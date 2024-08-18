@@ -8,8 +8,8 @@ import {
 } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import AnimatedDiv from "@/utils/animation";
-import Sidebar from "@/utils/side_bar";
+import Sidebar from "./side_bar";
+import AnimatedDiv from "../utils/animation";
 
 export const containerVariants = {
   hidden: { opacity: 1 },

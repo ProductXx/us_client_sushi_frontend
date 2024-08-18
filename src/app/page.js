@@ -1,6 +1,6 @@
-import HeroSection from "@/components/hero_section";
-import MenuSection from "@/components/menu_section";
 import React from "react";
+import HeroSection from "./components/hero_section";
+import MenuSection from "./components/menu_section";
 
 const App = () => {
   return (

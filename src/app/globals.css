@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .main-font {
   font-family: "Kanit", sans-serif;
   font-weight: 400;
