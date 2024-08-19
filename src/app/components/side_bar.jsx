@@ -83,6 +83,9 @@ function Sidebar({ isVisible, onClose }) {
             <Link href="/about">About</Link>
           </li>
           <li className="p-4 border-y text-xl font-bold hover:bg-gray-700">
+            <Link href="/cart">Your Cart</Link>
+          </li>
+          <li className="p-4 border-y text-xl font-bold hover:bg-gray-700">
             <Link href="/contact">Contact</Link>
           </li>
         </ul>

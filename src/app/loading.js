@@ -3,14 +3,14 @@ import "./loading.modules.css";
 const Loading = () => {
   return (
     <div className="h-[100vh] flex justify-center items-center ">
-      <div class="loading ">
-        <span class="loading__word">L</span>
-        <span class="loading__word">O</span>
-        <span class="loading__word">A</span>
-        <span class="loading__word">D</span>
-        <span class="loading__word">I</span>
-        <span class="loading__word">N</span>
-        <span class="loading__word">G</span>
+      <div className="loading ">
+        <span className="loading__word">L</span>
+        <span className="loading__word">O</span>
+        <span className="loading__word">A</span>
+        <span className="loading__word">D</span>
+        <span className="loading__word">I</span>
+        <span className="loading__word">N</span>
+        <span className="loading__word">G</span>
       </div>
     </div>
   );
