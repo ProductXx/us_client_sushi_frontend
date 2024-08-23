@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .main-font {
   font-family: "Kanit", sans-serif;
   font-weight: 400;
@@ -19,4 +18,10 @@
 }
 .secondary-btn {
   @apply bg-black/10 backdrop-blur-md md:py-2 md:px-8 px-4 py-2 items-center flex text-sm md:text-base rounded-full text-secondary hover:bg-primary hover:text-white transition duration-150;
+}
+.input {
+  @apply border p-2 border-slate-300 rounded;
+}
+.gradient-btn {
+  @apply bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded py-2 px-5;
 }
