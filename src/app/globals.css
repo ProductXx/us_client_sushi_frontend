@@ -8,20 +8,40 @@
   font-weight: 400;
   font-style: normal;
 }
+
 .hero-font {
   font-family: "Rowdies", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+
 .primary-btn {
   @apply bg-secondary md:py-2 md:px-8 px-4 py-2 items-center flex text-sm md:text-base rounded-full text-white hover:bg-primary transition duration-150;
 }
+
 .secondary-btn {
   @apply bg-black/10 backdrop-blur-md md:py-2 md:px-8 px-4 py-2 items-center flex text-sm md:text-base rounded-full text-secondary hover:bg-primary hover:text-white transition duration-150;
 }
+
 .input {
   @apply border p-2 border-slate-300 rounded;
 }
+
 .gradient-btn {
   @apply bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded py-2 px-5;
 }
+
+/* Modal styles */
+.modal {
+  @apply fixed inset-0 flex justify-center items-center z-50;
+  font-family: "Kanit", sans-serif; /* Applying the main font */
+}
+
+.modal-backdrop {
+  @apply absolute inset-0 bg-black/50 z-40;
+}
+
+.modal-content {
+  @apply relative z-50 bg-white p-6 rounded-lg text-center shadow-lg ;
+}
+

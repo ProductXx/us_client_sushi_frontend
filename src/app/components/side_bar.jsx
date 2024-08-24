@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { IconX } from "@tabler/icons-react";
 import useSidebarStore from "../store/useSideBarStore";
+import { useAuthStore } from "@/app/store/useAuthStore";
+import { toast } from "react-hot-toast";
 
 const sidebarVariants = {
   hidden: {
@@ -37,6 +39,19 @@ function Sidebar() {
   const sidebarRef = useRef(null);
   const { isSidebarVisible, closeSidebar } = useSidebarStore();
 
+  // Use useState to hold client-side state
+  const [isClient, setIsClient] = useState(false);
+  const { user, isAuthenticated, userLogout } = useAuthStore((state) => ({
+    user: state.user,
+    isAuthenticated: state.isAuthenticated,
+    userLogout: state.userLogout,
+  }));
+
+  // Ensure that we are on the client-side before accessing client-specific state
+  useEffect(() => {
+    setIsClient(true); // Set to true on component mount, only runs on client
+  }, []);
+
   const handleClickOutside = useCallback(
     (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
@@ -64,10 +79,16 @@ function Sidebar() {
     }
   }, [isSidebarVisible, handleClickOutside, handleScroll]);
 
+  const handleLogout = () => {
+    userLogout();
+    closeSidebar();
+    toast.success("Logged out successfully!");
+  };
+
   return (
     <motion.div
       ref={sidebarRef}
-      className="fixed top-0 left-0 w-64 h-full bg-gray-800 text-white z-50 flex flex-col"
+      className="fixed main-font top-0 left-0 w-64 h-full bg-gray-800 text-white z-50 flex flex-col"
       initial="hidden"
       animate={isSidebarVisible ? "visible" : "hidden"}
       exit="exit"
@@ -111,12 +132,33 @@ function Sidebar() {
           </Link>
         </div>
       </nav>
+      {isClient && !isAuthenticated && (
+        <div className="p-4 bg-gray-700 text-center">
+          <Link href="/auth/login" onClick={closeSidebar}>
+            <button className="gradient-btn rounded-full">
+              Login
+            </button>
+          </Link>
+        </div>
+      )}
       <motion.div
         className="p-4 text-center bg-gray-700"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.3 } }}
       >
-        <p>Some additional content or links here.</p>
+        {isClient && isAuthenticated && user && (
+          <div className="bg-gray-700 text-start flex flex-col gap-2">
+            <p className="font-bold">{user.username}</p>
+            <p className="text-sm">{user.email}</p>
+            <p className="text-sm">{user?.address}</p>
+            <button
+              onClick={handleLogout}
+              className=" mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-full"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );

@@ -5,6 +5,7 @@ import ProductCard from "../utils/product_card";
 const SingleItem = () => {
   const { data: products, error, isLoading } = useProducts();
 
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (!products || products.length === 0) return <div>No products found.</div>;

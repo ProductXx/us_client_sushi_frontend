@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientProvider from "./utils/client_provider";
 import Sidebar from "./components/side_bar";
+import Toast from "./utils/toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ClientProvider>
+          <Toast/>
           <Sidebar />
           <div className="main-font">{children}</div>
         </ClientProvider>
