@@ -13,7 +13,6 @@ const TOGGLE_CLASSES =
 const MenuSection = () => {
   const [selected, setSelected] = useState("single");
 
-
   return (
     <div className="md:p-10 p-5 flex flex-col gap-5 md:gap-10">
       <motion.div

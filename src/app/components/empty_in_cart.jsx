@@ -4,9 +4,9 @@ import React from "react";
 
 const EmptyInCart = () => {
   return (
-    <div className="h-[100vh] flex flex-col item-center gap-10 justify-center">
+    <div className="h-[70vh] flex flex-col item-center gap-10 justify-center">
       <div className=" self-center">
-        <img src="/assets/empty_in_cart.gif" alt="cart" />
+        <img src="/assets/empty.png" alt="cart" />
       </div>
       <div className=" self-center text-xl text-secondary flex flex-col gap-5">
         <p>There is no item in your cart.</p>
